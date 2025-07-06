@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1751562174433_b7f3d4dc",
+    "sender": "hu@12.com",
+    "subject": "d",
+    "body": "s",
+    "timestamp": "2025-07-04T00:02:54.583251",
+    "metadata_file": "email_metadata.json",
+    "enc_file": "email.enc"
+  },
+  {
+    "id": "1751791009941_70508de9",
+    "sender": "hu@12.com",
+    "subject": "d",
+    "body": "fdfsdgsd",
+    "timestamp": "2025-07-06T15:36:50.605590",
+    "metadata_file": "email_metadata.json",
+    "enc_file": "email.enc"
+  }
+]

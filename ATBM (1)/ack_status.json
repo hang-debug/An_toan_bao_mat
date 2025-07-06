@@ -1,0 +1,14 @@
+{
+  "ack": true,
+  "email_id": "1751791009941_70508de9",
+  "data": {
+    "status": "ACK",
+    "message": "Đã giải mã thành công",
+    "timestamp": "2025-07-06T08:39:21.714664",
+    "sender": "hu@12.com",
+    "subject": "d",
+    "body": "fdfsdgsd",
+    "email_id": "1751791009941_70508de9"
+  },
+  "timestamp": "2025-07-06T15:39:23.796669"
+}

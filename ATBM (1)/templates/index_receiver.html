@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giải Mã Email</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+      background-size: 500% 500%;
+      animation: gradientFlow 20s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientFlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .main-content {
+      flex: 1;
+    }
+
+    .container-custom {
+      padding: 50px 15px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .box-shadow {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+      padding: 30px;
+      animation: fadeInUp 1s;
+    }
+
+    @keyframes fadeInUp {
+      0% {opacity: 0; transform: translateY(40px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+      border: none;
+      width: 100%;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(91, 134, 229, 0.4);
+    }
+
+    .table-hover tbody tr:hover {
+      background: #fff0f6;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -60px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+      animation: floatUp 25s infinite ease-in;
+    }
+
+    .bubble:nth-child(1) { left: 5%; width: 30px; height: 30px; animation-duration: 22s; }
+    .bubble:nth-child(2) { left: 20%; width: 60px; height: 60px; animation-duration: 28s; }
+    .bubble:nth-child(3) { left: 40%; width: 25px; height: 25px; animation-duration: 20s; }
+    .bubble:nth-child(4) { left: 60%; width: 50px; height: 50px; animation-duration: 30s; }
+    .bubble:nth-child(5) { left: 80%; width: 40px; height: 40px; animation-duration: 26s; }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.4;
+      }
+      to {
+        transform: translateY(-1000px) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container-custom {
+        padding: 30px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bong bóng nền -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <div class="main-content">
+    <div class="container container-custom">
+      <div class="row g-4">
+        <!-- Form giải mã -->
+        <div class="col-lg-6">
+          <div class="box-shadow">
+            <h3 class="text-center mb-4"><i class="bi bi-unlock-fill text-success"></i> Giải Mã Email</h3>
+            <form action="/receive" method="POST" enctype="multipart/form-data" id="decrypt-form">
+              <div class="mb-3">
+                <label class="form-label">Chọn file:</label>
+                <input type="file" class="form-control" name="metadata" accept=".json" required id="metadata-input">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Chọn file key (.txt):</label>
+                <input type="file" class="form-control" name="keyfile" accept=".txt" required id="keyfile-input">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Từ (Người gửi):</label>
+                <input type="email" class="form-control" name="sender" required id="sender-input">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Tiêu đề:</label>
+                <input type="text" class="form-control" name="subject" required id="subject-input">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nội dung:</label>
+                <textarea class="form-control" name="body" rows="3" required id="body-input"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Giải mã Email</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Lịch sử email -->
+        <div class="col-lg-6">
+          <div class="box-shadow">
+            <h5 class="text-center mb-3"><i class="bi bi-clock-history text-primary"></i> Lịch sử gửi email</h5>
+            {% if sent_emails %}
+            <div class="table-responsive">
+              <table class="table table-hover text-center align-middle">
+                <thead class="table-light">
+                  <tr><th>Thời gian</th><th>Đến</th><th>Tiêu đề</th><th>Chọn</th></tr>
+                </thead>
+                <tbody>
+                  {% for email in sent_emails %}
+                  <tr {% if selected_email and selected_email.id == email.id %}class="table-info"{% endif %}>
+                    <td>{{ email.timestamp | safe }}</td>
+                    <td>{{ email.sender }}</td>
+                    <td>{{ email.subject }}</td>
+                    <td><a href="/select_sent_email/{{ email.id }}" class="btn btn-sm btn-primary">Chọn</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+            <p class="text-muted text-center">Không có email nào.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if decode_status %}
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="alert alert-{{ 'success' if decode_status=='Success' else 'danger' }}" role="alert">
+            <h5 class="mb-2">Kết quả giải mã:</h5>
+            {{ decode_message|safe }}
+          </div>
+        </div>
+      </div>
+      {% if decode_status == 'Success' %}
+      <div class="alert alert-info mt-3 text-center">Đã gửi ACK xác nhận về cho người gửi.</div>
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    // Đọc metadata và tự động điền form
+    document.getElementById('metadata-input').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const data = JSON.parse(evt.target.result);
+          let sender = data.sender || '';
+          let subject = data.subject || '';
+          let body = data.body || '';
+          if ((!sender || !subject || !body) && data.plaintext) {
+            const matchSender = data.plaintext.match(/From: (.*)/);
+            const matchSubject = data.plaintext.match(/Subject: (.*)/);
+            const matchBody = data.plaintext.match(/Body:([\s\S]*)/);
+            if (matchSender) sender = matchSender[1].trim();
+            if (matchSubject) subject = matchSubject[1].trim();
+            if (matchBody) body = matchBody[1].trim();
+          }
+          document.getElementById('sender-input').value = sender;
+          document.getElementById('subject-input').value = subject;
+          document.getElementById('body-input').value = body;
+        } catch (err) {
+          alert('Không đọc được metadata hợp lệ!');
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    });
+
+    // Poll handshake status
+    setInterval(function() {
+      fetch('/handshake_status')
+        .then(res => res.json())
+        .then(data => {
+          let el = document.getElementById('handshake-status-receiver');
+          if (!el) {
+            el = document.createElement('div');
+            el.id = 'handshake-status-receiver';
+            el.className = 'alert alert-info text-center mt-3';
+            document.querySelector('.container-custom').prepend(el);
+          }
+          if (data.status === 'Hello!') {
+            el.textContent = 'Hello! (Người gửi đã bắt đầu handshake)';
+          } else if (data.status === 'Ready!') {
+            el.textContent = 'Ready! (Người nhận đã sẵn sàng)';
+          } else {
+            el.textContent = '';
+          }
+        });
+    }, 2000);
+
+    // Bắt buộc chọn file key khi submit
+    document.getElementById('decrypt-form').addEventListener('submit', function(e) {
+      const keyInput = document.getElementById('keyfile-input');
+      if (!keyInput.files || keyInput.files.length === 0) {
+        alert('Vui lòng chọn file key (.txt) để giải mã!');
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
+
+  {% if selected_metadata %}
+  <script id="selected-metadata" type="application/json">
+    {{ selected_metadata | tojson | safe }}
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const data = JSON.parse(document.getElementById('selected-metadata').textContent);
+      let sender = data.sender || '';
+      let subject = data.subject || '';
+      let body = data.body || '';
+      if ((!sender || !subject || !body) && data.plaintext) {
+        const matchSender = data.plaintext.match(/From: (.*)/);
+        const matchSubject = data.plaintext.match(/Subject: (.*)/);
+        const matchBody = data.plaintext.match(/Body:([\s\S]*)/);
+        if (matchSender) sender = matchSender[1].trim();
+        if (matchSubject) subject = matchSubject[1].trim();
+        if (matchBody) body = matchBody[1].trim();
+      }
+      document.getElementById('sender-input').value = sender;
+      document.getElementById('subject-input').value = subject;
+      document.getElementById('body-input').value = body;
+    });
+  </script>
+  {% endif %}
+</body>
+</html>
