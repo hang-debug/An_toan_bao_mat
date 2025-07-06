@@ -165,5 +165,5 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 ## 📌 Tác giả
 
-- ✍️ Nguyễn Văn Giang - Nguyễn Thúy Hằng – Trường Đại học Đại Nam
+- ✍️ Nguyễn Thúy Hằng- Nguyễn Văn Giang  – Trường Đại học Đại Nam
 - 🗓️ Dự án thực hiện: Thực tập học kỳ 2025
