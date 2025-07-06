@@ -75,7 +75,8 @@ Sao chép
 Chỉnh sửa
 python receiver_app.py
 Sau khi chạy, truy cập http://127.0.0.1:5000 trên cả hai máy.
-![image](https://github.com/user-attachments/assets/e365b593-4681-401c-b5cd-27a12b252777)
+![image](https://github.com/user-attachments/assets/1acd2b2f-2bc9-468a-869c-d1e3db9e24eb)
+
 
 ![image](https://github.com/user-attachments/assets/8ef5c8f2-79ca-41ca-9b68-f5a63e43d17e)
 
