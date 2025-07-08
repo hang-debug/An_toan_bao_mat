@@ -101,7 +101,8 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷 Giao diện bên nhận:
 
-![z6777135305801](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777135305801_04e6408d83a4598fc8ef8156ae8ba4dd.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/4f0f51ea-944d-45fd-865d-b6ca54af570e)
+
 
 ---
 
@@ -111,9 +112,12 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷 Các bước bắt tay:
 
-![z6777142464651](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777142464651_bd47e0507e99af953ca74bdadfb7f849.jpg?raw=true)  
-![z6777143179952](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777143179952_4aa3bc8352e8ffa9bf14be64affec93d.jpg?raw=true)  
-![z6777143664596](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777143664596_5c117949baf9e5ebfe3a46cd09c5a371.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/f5fa0b34-6ccd-4fb1-980d-939e6874961e)
+  
+![image](https://github.com/user-attachments/assets/88dad7dd-2c02-4405-b356-e92acd8fa72b)
+
+![image](https://github.com/user-attachments/assets/92cc1bbb-a26f-4ab9-b38e-6fd5e07748d0)
+
 
 ---
 
@@ -125,7 +129,8 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷
 
-![z6777148731872](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777148731872_e54e5d93f9dc081bcce9345e288c34e2.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/b9050694-155d-4aa3-bdd8-8fac56e03497)
+
 
 ---
 
@@ -133,7 +138,8 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷 Đồng hồ đếm ngược – Trạng thái HẾT HẠN
 
-![z6777152315411](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777152315411_a4af23cb62e2796785267b1ff4838489.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/b3b384ee-1e57-4b56-9a83-52941fccf8ac)
+
 
 ---
 
@@ -145,7 +151,8 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷
 
-![z6777152315411-2](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777152315411_a4af23cb62e2796785267b1ff4838489.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/60ab6ba0-b13c-4b18-b907-75812d09c55b)
+
 
 ---
 
@@ -159,11 +166,12 @@ Sau đó truy cập: `http://127.0.0.1:5000`
 
 📷
 
-![z6777157215459](https://github.com/GiangNguyen204/guiemailcothoigian/blob/main/ảnh/z6777157215459_a63dc5ecc8bdf1d9b71c63fb68185a69.jpg?raw=true)
+![image](https://github.com/user-attachments/assets/ebf263c0-7bc2-4308-957d-5b14c0c22bce)
+
 
 ---
 
 ## 📌 Tác giả
 
-- ✍️ Nguyễn Thúy Hằng- Nguyễn Văn Giang  – Trường Đại học Đại Nam
+- ✍️ Nguyễn Văn Giang - Nguyễn Thúy Hằng – Trường Đại học Đại Nam
 - 🗓️ Dự án thực hiện: Thực tập học kỳ 2025
